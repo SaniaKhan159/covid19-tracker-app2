@@ -28,7 +28,7 @@ jobs:
       - name: Github Action for Yarn
         uses: Borales/actions-yarn@v2.1.0
         with:
-          cmd: npm install
+          cmd: install
         
       - name: creating build
         run: yarn build
