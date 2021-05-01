@@ -25,10 +25,19 @@ jobs:
         with:
           node-version: 12
           
-      - name: Github Action for Yarn
-        uses: Borales/actions-yarn@v2.1.0
-        with:
-          cmd: install
+      # - name: Github Action for Yarn
+      #   uses: Borales/actions-yarn@v2.1.0
+      #   with:
+      #     cmd: install
+
+      # Yarn Installation
+
+      - name: Prepare for Yarn Installation
+        run: curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+      - name: install yarn
+        run: sudo apt update && sudo apt install yarn
+      - name: Install Packages
+        run: yarn install
         
       - name: creating build
         run: yarn build
